@@ -1,7 +1,7 @@
 'use strict';
 const net = require('net');
 const server = net.createServer();
-const parse = require('./lib/parse-message.js');
+const parseMessage = require('./lib/parse-message.js');
 
 let sockets = [];
 
@@ -21,7 +21,7 @@ server.on('connection', function(socket){
       return parseMessage.dmCommand(message,sockets);
 
     if(message.startsWith('/users'))
-      return parseMessage.users(sockets, socket);
+      return parseMessage.usersCommand(sockets, socket);
 
     if(message.startsWith('/troll'))
       return parseMessage.trollCommand(message,sockets);
