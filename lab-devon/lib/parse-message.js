@@ -12,7 +12,8 @@ exports.dmCommand = function dmCommand(message, sockets) {
   let content = message.split(' ').slice(2).join(' ').trim();
   sockets.forEach( s => {
     if(s.username === toUsername)
-      s.write(toUsername + ':' + content);
+      s.write(s.username + ':' + content);
+
   });
 };
 
